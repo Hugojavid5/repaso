@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mikel.dein_proyecto_2.controladores.ControllerPrestamo">
+   <children>
+      <HBox alignment="CENTER" prefHeight="66.0" prefWidth="316.0">
+         <children>
+            <Label text="%pres.label.prestamo">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" prefHeight="190.0" prefWidth="316.0" spacing="10.0">
+         <children>
+            <Label text="%pres.label.alumno" />
+            <ComboBox fx:id="comboAlumnos" prefHeight="25.0" prefWidth="240.0">
+               <tooltip>
+                  <Tooltip text="%tooltip.comboAlumno" />
+               </tooltip></ComboBox>
+            <Label text="%pres.label.libro" />
+            <ComboBox fx:id="comboLibros" prefHeight="25.0" prefWidth="240.0">
+               <tooltip>
+                  <Tooltip text="%tooltip.comboLibro" />
+               </tooltip></ComboBox>
+            <Label text="%pres.label.fecha" />
+            <DatePicker fx:id="fecha" prefHeight="25.0" prefWidth="240.0" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="316.0" spacing="40.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#accionGuardar" styleClass="guardar-button" text="%pres.btn.guardar" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#accionCancelar" styleClass="eliminar-button" text="%pres.btn.cancelar" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

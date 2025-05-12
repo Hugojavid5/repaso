@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="451.0"  xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControllerLibro">
+   <children>
+      <HBox alignment="CENTER" prefHeight="57.0" prefWidth="451.0">
+         <children>
+            <Label text="%libro.label.libros">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="217.0" prefWidth="451.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="176.0" prefWidth="219.0" spacing="4.0">
+               <children>
+                  <Label text="%libro.label.titulo" />
+                  <TextField fx:id="txtTitulo" />
+                  <Label text="%libro.label.autor" />
+                  <TextField fx:id="txtAutor" />
+                  <Label text="%libro.label.editorial" />
+                  <TextField fx:id="txtEditorial" />
+                  <Label text="%libro.label.estado" />
+                  <ComboBox fx:id="comboEstado" prefHeight="24.0" prefWidth="263.0">
+                     <tooltip>
+                        <Tooltip text="%tooltip.comboEstado" />
+                     </tooltip></ComboBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="176.0" prefWidth="240.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="221.0" spacing="50.0">
+                     <children>
+                        <Label text="%libro.label.portada" />
+                        <Button mnemonicParsing="false" onAction="#accionSeleccionarImagen" text="%libro.btn.seleccionar">
+                           <tooltip>
+                              <Tooltip text="%tooltip.btnSeleccionarImg" />
+                           </tooltip></Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="165.0" prefWidth="236.0">
+                     <children>
+                        <ImageView fx:id="imgFoto" fitHeight="149.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../../../../../DEIN_Proyecto_2/src/main/resources/imagenes/iconoLibro.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="236.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnBorrarFoto" mnemonicParsing="false" onAction="#accionBorrarImagen" text="%libro.btn.borrar">
+                           <tooltip>
+                              <Tooltip text="%tooltip.btnBorrarImg" />
+                           </tooltip></Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="451.0" spacing="70.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#accionGuardar" styleClass="guardar-button" text="%libro.btn.guardar" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#accionCancelar" styleClass="eliminar-button" text="%libro.btn.cancelar" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

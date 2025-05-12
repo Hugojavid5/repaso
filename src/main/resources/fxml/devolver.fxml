@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="288.0"  xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControllerDevolver">
+   <children>
+      <HBox alignment="CENTER" prefHeight="69.0" prefWidth="288.0">
+         <children>
+            <Label text="%devolver.label.devolver">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" prefHeight="128.0" prefWidth="288.0" spacing="10.0">
+         <children>
+            <Label text="%devolver.label.prestamo" />
+            <ComboBox fx:id="comboPrestamo" onAction="#accionCambiarPrestamo" prefHeight="25.0" prefWidth="240.0">
+               <tooltip>
+                  <Tooltip text="%tooltip.comboPrestamo" />
+               </tooltip></ComboBox>
+            <Label text="%devolver.label.estado" />
+            <ComboBox fx:id="comboEstado" prefHeight="25.0" prefWidth="240.0">
+               <tooltip>
+                  <Tooltip text="%tooltip.comboEstado" />
+               </tooltip></ComboBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="288.0" spacing="30.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#accionDevolver" styleClass="guardar-button" text="%devolver.btn.devolver" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#accionCancelar" styleClass="eliminar-button" text="%devolver.btn.cancelar" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

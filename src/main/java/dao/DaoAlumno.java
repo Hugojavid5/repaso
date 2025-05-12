@@ -16,7 +16,8 @@ public class DaoAlumno {
     /**
      * Obtiene todos los alumnos de la base de datos.
      */
-    public List<ModeloAlumno> obtenerTodosLosAlumnos() {
+    // Metodo estático que recibe la conexión como parámetro
+    public static List<ModeloAlumno> obtenerTodosLosAlumnos(Connection conexion) {
         List<ModeloAlumno> lista = new ArrayList<>();
         String sql = "SELECT * FROM Alumno";
 

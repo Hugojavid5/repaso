@@ -201,7 +201,7 @@ public class DaoLibro {
      *
      * @return Lista observable de libros disponibles para préstamo.
      */
-    public static ObservableList<ModeloLibro> todosLibrosParaPrestar() {
+    public static ObservableList<ModeloLibro> todosLibrosParaPrestar(Connection conexion) {
         ConexionBBDD connection;
         ObservableList<ModeloLibro> libros = FXCollections.observableArrayList();
         try {

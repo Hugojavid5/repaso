@@ -81,7 +81,7 @@ public class ConexionBBDD {
         return null;
     }
 
-  /*
+
 
     public static Properties cargarIdioma() {
         try (FileInputStream fs = new FileInputStream("idioma.properties")) {
@@ -93,9 +93,9 @@ public class ConexionBBDD {
         }
         return null;
     }
-    */
 
-    /*
+
+
     public static void guardarIdioma(String nuevoIdioma) {
         Properties properties = cargarIdioma();
         if (properties != null) {
@@ -108,7 +108,7 @@ public class ConexionBBDD {
             }
         }
     }
-    */
+
     public static void main(String[] args) {
         try {
             // Crear una instancia de ConexionBBDD
