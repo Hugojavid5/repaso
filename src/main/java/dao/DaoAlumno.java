@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoAlumno {
-    private Connection conexion;
+    private static Connection conexion;
 
     public DaoAlumno(Connection conexion) {
         this.conexion = conexion;
@@ -42,7 +42,7 @@ public class DaoAlumno {
     /**
      * Obtiene un alumno por su DNI.
      */
-    public ModeloAlumno obtenerAlumnoPorDni(String dni) {
+    public static ModeloAlumno obtenerAlumnoPorDni(String dni) {
         String sql = "SELECT * FROM Alumno WHERE dni = ?";
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setString(1, dni);
