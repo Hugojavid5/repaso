@@ -1,0 +1,25 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, white, #4DDBFF);
+}
+
+/* Botones default */
+.button {
+    -fx-background-color: #0096cc;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #006699;
+}
+
+/* Estilo para el botón Guardar */
+.guardar-button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+}
+
+/* Estilo para el botón Eliminar */
+.eliminar-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+}

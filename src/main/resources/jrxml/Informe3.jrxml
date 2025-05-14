@@ -1,0 +1,84 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Informe3" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a9b0399-df80-4ec1-a7af-5e21d081d5a1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IMAGE_PATH" class="java.lang.String"/>
+	<parameter name="Resource_PATH" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT titulo, autor 
+FROM libros.Libro 
+ORDER BY codigo LIMIT 1
+]]></query>
+	<field name="titulo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="autor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="autor"/>
+		<property name="com.jaspersoft.studio.field.label" value="autor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="77" splitType="Stretch">
+		<element kind="rectangle" uuid="5fc611cf-63f7-49a0-8b6f-291c60c4b856" x="-20" y="0" width="595" height="74" backcolor="#1CCEFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="image" uuid="1a51c246-98fa-489f-8915-5223224b47f8" x="20" y="0" width="80" height="74">
+			<expression><![CDATA[$P{IMAGE_PATH} + "logo.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="9bfd402e-76da-4961-9270-61da60bdc391" x="309" y="10" width="235" height="50" forecolor="#FFFFFF" fontSize="29.0" hTextAlign="Right">
+			<text><![CDATA[LEKTORIKA]]></text>
+		</element>
+	</title>
+	<pageHeader height="39" splitType="Stretch">
+		<element kind="rectangle" uuid="70a9edcc-a197-4db7-8b46-60452028347e" x="-20" y="-5" width="595" height="44" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="611dfe89-3607-43bc-a8a6-f66dfa281abf" x="-20" y="-4" width="595" height="43" forecolor="#FFFFFF" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[GRAFICOS BIBLIOTECA]]></text>
+		</element>
+	</pageHeader>
+	<detail>
+		<band height="464">
+			<element kind="staticText" uuid="53fb4488-93ec-45a9-b483-6fa90567ea0d" x="0" y="19" width="550" height="30" fontSize="16.0">
+				<text><![CDATA[GRAFICO ESTADO LIBROS]]></text>
+			</element>
+			<element kind="subreport" uuid="154c7d79-634c-4332-b62e-bbd1220a0fb3" x="0" y="59" width="200" height="70">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA[$P{Resource_PATH} + "Subinforme_graficos1.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b2c44b98-a025-4ed0-9cda-b2ac41bb6312" x="0" y="180" width="550" height="30" fontSize="16.0">
+				<text><![CDATA[LIBROS MAS PRESTADOS]]></text>
+			</element>
+			<element kind="subreport" uuid="e42c35c9-d319-4fb3-9fa9-649ae61d5571" x="0" y="220" width="200" height="70">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA[$P{Resource_PATH} + "Subinforme_graficos2.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f31061b6-439b-4766-a600-cd40c5c8f69b" x="0" y="340" width="550" height="30" fontSize="16.0">
+				<text><![CDATA[PRESTAMOS POR ALUMNO]]></text>
+			</element>
+			<element kind="subreport" uuid="dd9cfce6-d31b-43bf-9845-016a59ca9e61" x="0" y="380" width="200" height="70">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA[$P{Resource_PATH} + "Subinforme_graficos3.jasper"]]></expression>
+			</element>
+			<element kind="break" uuid="a7a8e2e6-b402-41e6-bc93-b4a2fbb0e8a1" x="0" y="140" width="343" height="1"/>
+			<element kind="break" uuid="0dddef28-cbc2-41ec-a9a3-91378a089dd5" x="0" y="300" width="342" height="1"/>
+		</band>
+	</detail>
+	<pageFooter height="35" splitType="Stretch">
+		<element kind="rectangle" uuid="92692ca6-6ff0-41ba-8f93-8b8a46180a55" x="-20" y="-1" width="595" height="31" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="textField" uuid="46350259-ee08-4f05-8ab9-a788922ef3e7" x="0" y="4" width="190" height="20">
+			<expression><![CDATA[new java.text.SimpleDateFormat("EEEE dd MMMM yyyy", new java.util.Locale("es", "ES")).format(new java.util.Date())]]></expression>
+		</element>
+		<element kind="textField" uuid="9e2131dc-36c1-44fe-873f-077494746227" x="380" y="4" width="100" height="19" hTextAlign="Right">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="b77a62b1-8f1c-4723-92b2-c9b2fd308d50" x="480" y="4" width="70" height="19" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA["/ " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

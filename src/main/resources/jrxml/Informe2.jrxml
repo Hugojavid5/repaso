@@ -1,0 +1,99 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Informe2" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="12ca426c-6803-4325-bb56-dbbc3bf89ca6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB Docker"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IMAGE_PATH" class="java.lang.String"/>
+	<parameter name="Resource_PATH" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT 
+    l.codigo,
+    l.titulo,
+    l.autor,
+    l.editorial,
+    l.estado
+FROM 
+    libros.`Libro` l
+]]></query>
+	<field name="codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="titulo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="autor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="autor"/>
+		<property name="com.jaspersoft.studio.field.label" value="autor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="editorial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="editorial"/>
+		<property name="com.jaspersoft.studio.field.label" value="editorial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estado"/>
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="rectangle" uuid="9b997bba-c2b9-4483-884d-97b04861d65f" x="-20" y="0" width="595" height="74" backcolor="#1CCEFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="image" uuid="94d7ab2b-867e-4d3b-b871-bec7897766b9" x="20" y="0" width="80" height="74">
+			<expression><![CDATA[$P{IMAGE_PATH} + "logo.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="589010d3-e6ef-4ad6-b1cf-ff53318772ed" x="309" y="10" width="235" height="50" forecolor="#FFFFFF" fontSize="29.0" hTextAlign="Right">
+			<text><![CDATA[LEKTORIKA]]></text>
+		</element>
+	</title>
+	<pageHeader height="39" splitType="Stretch">
+		<element kind="rectangle" uuid="9ce5f941-5c54-4222-9414-8d835bdaa252" x="-20" y="-5" width="595" height="44" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="d20c44db-0020-40b0-8b78-5d6897d3cd39" x="-20" y="-4" width="595" height="43" forecolor="#FFFFFF" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[LISTADO LIBROS]]></text>
+		</element>
+	</pageHeader>
+	<detail>
+		<band height="110" splitType="Stretch">
+			<element kind="textField" uuid="1033d940-8e53-4c91-ad4c-f0b1ba5002bb" x="20" y="10" width="530" height="50" fontSize="13.0" bold="true">
+				<expression><![CDATA["Código: " + $F{codigo} + 
+" | Título: " + $F{titulo} + 
+" | Autor: " + $F{autor} + 
+" | Editorial: " + $F{editorial} + 
+" | Estado: " + $F{estado}
+]]></expression>
+			</element>
+			<element kind="subreport" uuid="0a3c937e-c01a-4109-bb8a-98ffe7c43701" x="20" y="61" width="40" height="30">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA[$P{Resource_PATH} + "Subinforme_prestamos.jasper"]]></expression>
+				<parameter name="codigo_libro">
+					<expression><![CDATA[$F{codigo}]]></expression>
+				</parameter>
+			</element>
+			<element kind="line" uuid="085884fd-f849-4e8e-b88d-3b65e1ea0353" x="20" y="60" width="530" height="1">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineStyle="Dotted"/>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="29" splitType="Stretch">
+		<element kind="rectangle" uuid="44842741-a2fb-4457-8f27-fd2b9132bd26" x="-20" y="-1" width="595" height="30" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="textField" uuid="b0fbcbb4-f93a-41d0-aaf6-b15cd2309cbb" x="0" y="4" width="190" height="20">
+			<expression><![CDATA[new java.text.SimpleDateFormat("EEEE dd MMMM yyyy", new java.util.Locale("es", "ES")).format(new java.util.Date())]]></expression>
+		</element>
+		<element kind="textField" uuid="994afe81-4176-43a4-abf5-42d3ab4adcf4" x="380" y="4" width="100" height="19" hTextAlign="Right">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="904e5431-a3a0-4708-8548-a2ffc6bac69e" x="480" y="4" width="70" height="19" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA["/ " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

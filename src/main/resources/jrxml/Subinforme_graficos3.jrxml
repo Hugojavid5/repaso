@@ -1,0 +1,38 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Subinforme_graficos3" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="af9d706c-7e83-483c-beaa-37c89597fbe6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<query language="sql"><![CDATA[SELECT 
+    a.nombre AS alumno,
+    COUNT(h.id_prestamo) AS total_prestamos
+FROM libros.Historico_prestamo h
+INNER JOIN libros.Alumno a ON h.dni_alumno = a.dni
+GROUP BY a.nombre
+ORDER BY total_prestamos DESC
+]]></query>
+	<field name="alumno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="alumno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="total_prestamos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_prestamos"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_prestamos"/>
+	</field>
+	<background splitType="Stretch"/>
+	<columnHeader height="212" splitType="Stretch">
+		<element kind="chart" chartType="bar" uuid="1200e83c-09f7-4000-8f75-4f472aa47179" x="-20" y="0" width="540" height="200" evaluationTime="Report" theme="aegean">
+			<dataset kind="category">
+				<series>
+					<seriesExpression><![CDATA["SERIES 1"]]></seriesExpression>
+					<categoryExpression><![CDATA[$F{alumno}]]></categoryExpression>
+					<valueExpression><![CDATA[$F{total_prestamos}]]></valueExpression>
+					<labelExpression><![CDATA[$F{alumno}]]></labelExpression>
+				</series>
+			</dataset>
+			<plot categoryAxisLabelColor="#000000" categoryAxisTickLabelColor="#000000" categoryAxisLineColor="#000000" valueAxisLabelColor="#000000" valueAxisTickLabelColor="#000000" valueAxisLineColor="#000000">
+				<itemLabel/>
+			</plot>
+		</element>
+	</columnHeader>
+</jasperReport>

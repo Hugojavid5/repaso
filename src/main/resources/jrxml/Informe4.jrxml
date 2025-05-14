@@ -1,0 +1,271 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Informe4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="edf03ed4-ff50-4547-a61d-1558c042aecf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#4DDBFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#4DDBFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="DatasetTable" uuid="4f361e9c-1865-4550-bd01-1f14c0d0872a">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+		<query language="SQL"><![CDATA[SELECT 
+    a.dni,
+    a.nombre,
+    a.apellido1,
+    a.apellido2,
+    COUNT(DISTINCT h.id_prestamo) AS libros_prestados,
+    COALESCE(SUM(DATEDIFF(COALESCE(h.fecha_devolucion, NOW()), h.fecha_prestamo)), 0) AS dias_prestamo,
+    COUNT(DISTINCT CASE WHEN h.fecha_devolucion IS NOT NULL THEN h.id_prestamo END) AS libros_devueltos
+FROM 
+    libros.Alumno a
+LEFT JOIN 
+    libros.Historico_prestamo h ON h.dni_alumno = a.dni
+GROUP BY 
+    a.dni, a.nombre, a.apellido1, a.apellido2;
+]]></query>
+		<field name="dni" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="dni"/>
+			<property name="com.jaspersoft.studio.field.label" value="dni"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+		</field>
+		<field name="apellido1" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+		</field>
+		<field name="apellido2" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+		</field>
+		<field name="libros_prestados" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="libros_prestados"/>
+			<property name="com.jaspersoft.studio.field.label" value="libros_prestados"/>
+		</field>
+		<field name="dias_prestamo" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="dias_prestamo"/>
+			<property name="com.jaspersoft.studio.field.label" value="dias_prestamo"/>
+		</field>
+		<field name="libros_devueltos" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="libros_devueltos"/>
+			<property name="com.jaspersoft.studio.field.label" value="libros_devueltos"/>
+		</field>
+	</dataset>
+	<parameter name="IMAGE_PATH" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT 
+    a.dni,
+    a.nombre,
+    a.apellido1,
+    a.apellido2,
+    COUNT(DISTINCT h.id_prestamo) AS libros_prestados,
+    COALESCE(SUM(DATEDIFF(COALESCE(h.fecha_devolucion, NOW()), h.fecha_prestamo)), 0) AS dias_prestamo,
+    COUNT(DISTINCT CASE WHEN h.fecha_devolucion IS NOT NULL THEN h.id_prestamo END) AS libros_devueltos
+FROM 
+    libros.Alumno a
+LEFT JOIN 
+    libros.Historico_prestamo h ON h.dni_alumno = a.dni
+GROUP BY 
+    a.dni, a.nombre, a.apellido1, a.apellido2;
+
+
+]]></query>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="apellido2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="libros_prestados" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="libros_prestados"/>
+		<property name="com.jaspersoft.studio.field.label" value="libros_prestados"/>
+	</field>
+	<field name="dias_prestamo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="dias_prestamo"/>
+		<property name="com.jaspersoft.studio.field.label" value="dias_prestamo"/>
+	</field>
+	<field name="libros_devueltos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="libros_devueltos"/>
+		<property name="com.jaspersoft.studio.field.label" value="libros_devueltos"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="75" splitType="Stretch">
+		<element kind="rectangle" uuid="a3edb322-8168-4c23-832f-e27ba57e6875" x="-20" y="0" width="595" height="74" backcolor="#1CCEFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="image" uuid="869c712c-feb3-44cc-87f6-b67c6f937d28" x="20" y="0" width="80" height="74">
+			<expression><![CDATA[$P{IMAGE_PATH} + "logo.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="449bfab0-acca-46e7-b205-f61838029a62" x="309" y="10" width="235" height="50" forecolor="#FFFFFF" fontSize="29.0" hTextAlign="Right">
+			<text><![CDATA[LEKTORIKA]]></text>
+		</element>
+	</title>
+	<pageHeader height="39" splitType="Stretch">
+		<element kind="rectangle" uuid="88461fdc-4085-48bc-a077-642704a3e54c" x="-20" y="-5" width="595" height="44" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="3e5e813e-db5b-4b8f-80bd-246e38227137" x="-20" y="-4" width="595" height="43" forecolor="#FFFFFF" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DATOS ALUMNOS]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="121" splitType="Stretch">
+		<element kind="component" uuid="bf997e31-208a-44d5-8d3f-8a90aeb00e46" x="-3" y="40" width="560" height="60">
+			<component kind="table">
+				<datasetRun uuid="f2eeb03d-c1e4-4113-9a3c-bf339f3160b8" subDataset="DatasetTable">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="single" uuid="e4786b4c-b0f7-4435-b4d3-a3c38d117942" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="a362a32f-f728-4868-b57c-40c03f1f707b" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[DNI]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="98bd6a08-f32a-482e-bd59-88be12672fa8" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{dni}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+				</column>
+				<column kind="single" uuid="e0bb6233-25da-4bd1-8287-5f6a7b2d8631" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="646f6485-5184-41ad-91d1-3d97968ebe73" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[NOMBRE]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="8be03084-f382-41aa-81ce-d54704ef6fed" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{nombre}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+				</column>
+				<column kind="single" uuid="2015b050-4b03-4afa-98e0-2c65105f3cf3" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="8ccf49b4-c33d-44de-b0fd-2e73c4c8d10d" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[1 APELLIDO]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="fa0786df-d173-4576-9d6c-806b05c4f340" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{apellido1}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+				</column>
+				<column kind="single" uuid="faca9c5d-b83a-4db3-8d03-5ac7e976feaa" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="ee064347-5213-419f-8eee-f7c4104d41ba" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[2 APELLIDO]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="bf6884dc-b6df-4bca-9086-96fad384c842" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{apellido2}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+				</column>
+				<column kind="single" uuid="90faf74d-d150-49f8-b7ef-678acc70753e" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="c963b7e0-c37e-4f93-a8e6-ad4fc154cbc5" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[LIBROS PRESTADOS]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="70cf666a-0158-489c-945b-47180831cf1d" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{libros_prestados}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+				</column>
+				<column kind="single" uuid="777299c7-cdcd-4b67-9db1-431d3fc3f962" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="b086a8f9-b0c8-4ed4-87df-cb21326e962e" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[DIAS PRESTADO]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="70960c44-323f-4009-ad84-cdab0959e38a" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{dias_prestamo}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+				</column>
+				<column kind="single" uuid="5de86148-f578-4af9-b1da-a2b9fff95be9" width="80">
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="045e3fc9-7960-41c9-a026-5fcc513ecc66" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" bold="true" hTextAlign="Center" vTextAlign="Middle">
+							<text><![CDATA[LIBROS DEVUELTOS]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="bef6eede-e352-459b-90d1-2927b6437fc9" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+							<expression><![CDATA[$F{libros_devueltos}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+				</column>
+			</component>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+			<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+			<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+		</element>
+	</columnHeader>
+	<pageFooter height="32" splitType="Stretch">
+		<element kind="rectangle" uuid="6cfa0c6b-a3c6-4a09-b24b-522d021ef540" x="-20" y="-1" width="595" height="31" backcolor="#4DDBFF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="textField" uuid="d021bdf5-39f2-4b29-b3bc-322742be7235" x="0" y="4" width="190" height="20">
+			<expression><![CDATA[new java.text.SimpleDateFormat("EEEE dd MMMM yyyy", new java.util.Locale("es", "ES")).format(new java.util.Date())]]></expression>
+		</element>
+		<element kind="textField" uuid="961ad15f-181a-458c-9345-add330e2a168" x="380" y="4" width="100" height="19" hTextAlign="Right">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="64e56ea4-7462-406f-9680-bf00dff07d7d" x="480" y="4" width="70" height="19" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA["/ " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

@@ -1,5 +1,6 @@
 package dao;
 
+import BBDD.ConexionBBDD;
 import modelos.ModeloAlumno;
 
 import java.sql.*;
@@ -43,25 +44,28 @@ public class DaoAlumno {
     /**
      * Obtiene un alumno por su DNI.
      */
-    public static ModeloAlumno obtenerAlumnoPorDni(String dni) {
-        String sql = "SELECT * FROM Alumno WHERE dni = ?";
-        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
-            stmt.setString(1, dni);
-            ResultSet rs = stmt.executeQuery();
-
+    public static ModeloAlumno obtenerAlumnoPorDni(String dni_alumno) {
+        ConexionBBDD connection;
+        ModeloAlumno alumno = null;
+        try {
+            connection = new ConexionBBDD();
+            String consulta = "SELECT dni,nombre,apellido1,apellido2 FROM Alumno WHERE dni = ?";
+            PreparedStatement pstmt = connection.getConnection().prepareStatement(consulta);
+            pstmt.setString(1, dni_alumno);
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return new ModeloAlumno(
-                        rs.getString("dni"),
-                        rs.getString("nombre"),
-                        rs.getString("apellido1"),
-                        rs.getString("apellido2")
-                );
+                String dni = rs.getString(1);
+                String nombre = rs.getString(2);
+                String apellido1 = rs.getString(3);
+                String apellido2 = rs.getString(4);
+                alumno = new ModeloAlumno(dni,nombre,apellido1,apellido2);
             }
+            rs.close();
+            connection.CloseConexion();
         } catch (SQLException e) {
-            System.err.println("Error al obtener alumno por DNI: " + e.getMessage());
+            System.err.println(e.getMessage());
         }
-
-        return null;
+        return alumno;
     }
 
     /**

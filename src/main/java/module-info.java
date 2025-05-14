@@ -8,7 +8,9 @@ module org.hugo.dein.repaso {
 
 
     opens org.hugo.dein.repaso to javafx.fxml;
-    exports org.hugo.dein.repaso;
-    exports controladores;
     opens controladores to javafx.fxml;
+    opens modelos to javafx.base;
+    exports org.hugo.dein.repaso;
+
+
 }

@@ -1,0 +1,122 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Subinforme_prestamos" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a0d9a790-1bb9-42c8-8e56-949bf01cacb4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB Docker"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="Dataset2" uuid="b3bb59c6-e5f4-464d-9e69-3caf81ef8ffc">
+		<query language="sql"><![CDATA[]]></query>
+	</dataset>
+	<parameter name="codigo_libro" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT 
+    h.id_prestamo, 
+    h.dni_alumno, 
+    h.fecha_prestamo, 
+    h.fecha_devolucion
+FROM libros.`Historico_prestamo` h
+WHERE h.codigo_libro =  $P{codigo_libro} 
+]]></query>
+	<field name="id_prestamo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_prestamo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_prestamo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Historico_prestamo"/>
+	</field>
+	<field name="dni_alumno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni_alumno"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni_alumno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Historico_prestamo"/>
+	</field>
+	<field name="fecha_prestamo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_prestamo"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_prestamo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Historico_prestamo"/>
+	</field>
+	<field name="fecha_devolucion" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_devolucion"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_devolucion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Historico_prestamo"/>
+	</field>
+	<background splitType="Stretch"/>
+	<columnHeader height="80" splitType="Stretch">
+		<element kind="staticText" uuid="0da33f74-404e-479b-9684-ca387c52fe48" x="-20" y="0" width="240" height="30" fontSize="11.0">
+			<text><![CDATA[Historial Prestamos]]></text>
+		</element>
+		<element kind="rectangle" uuid="8559faff-9cc0-40cf-b59d-c33ed09a412f" x="-20" y="50" width="100" height="30" backcolor="#4DDBFF">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="6ccabc97-ebb1-43e8-a606-9ba090e8befb" x="-19" y="50" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[ID]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="85681e82-dd96-4865-a276-a9f0203a6194" x="79" y="50" width="100" height="30" backcolor="#4DDBFF">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="5fafa609-fcc3-4e60-89db-0c4ea7edb96c" x="80" y="50" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DNI ALUMNO]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="bca21bb1-dda2-4e62-886c-116cebee3071" x="180" y="50" width="100" height="30" backcolor="#4DDBFF">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="1dd348f4-056b-46bf-b041-31df06bf3212" x="180" y="50" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DNI ALUMNO]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="117e0a2e-184c-4f85-9b82-a8ed1580cc94" x="280" y="50" width="100" height="30" backcolor="#4DDBFF">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="a69f5f72-f116-4da9-97b1-0922e7bc8fd1" x="280" y="50" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DNI ALUMNO]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<element kind="textField" uuid="5a7b44cf-982f-42d2-b4ec-be72596dc86b" x="-20" y="0" width="100" height="28" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{id_prestamo}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="d031fad9-709d-40b4-b87f-6daa8bb20259" x="80" y="0" width="100" height="28" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{dni_alumno}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="b74f2304-13f9-47a2-8d1d-8929d857de45" x="180" y="0" width="100" height="28" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{fecha_prestamo})]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="3a36b60e-bf7b-4d41-9691-b2fd54f0a4a5" x="280" y="0" width="100" height="28" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{fecha_devolucion})]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

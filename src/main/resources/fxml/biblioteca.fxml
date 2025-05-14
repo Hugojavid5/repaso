@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="700.0"  xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControllerBiblioteca">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../estilos/estilo.css" prefHeight="452.0" prefWidth="700.0"  xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControllerBiblioteca">
    <children>
       <MenuBar>
         <menus>
@@ -51,7 +51,7 @@
          <children>
             <ImageView fitHeight="105.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <image>
-                  <Image url="@../../../../../DEIN_Proyecto_2/src/main/resources/imagenes/logo.png" />
+                  <Image url="@../imagenes/logo.png" />
                </image>
                <HBox.margin>
                   <Insets />

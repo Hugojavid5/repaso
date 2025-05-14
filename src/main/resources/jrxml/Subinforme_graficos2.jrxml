@@ -1,0 +1,38 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Subinforme_graficos2" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5258664-f413-4189-b6ca-3fd64ee3b849">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<query language="sql"><![CDATA[SELECT 
+    l.titulo AS titulo,
+    COUNT(h.id_prestamo) AS total_prestamos
+FROM libros.Historico_prestamo h
+INNER JOIN libros.Libro l ON h.codigo_libro = l.codigo
+GROUP BY l.titulo
+ORDER BY total_prestamos DESC
+
+]]></query>
+	<field name="titulo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="total_prestamos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_prestamos"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_prestamos"/>
+	</field>
+	<background splitType="Stretch"/>
+	<columnHeader height="221" splitType="Stretch">
+		<element kind="chart" chartType="pie" uuid="736c3950-d0c0-4ed1-a9ea-f83222e9526d" x="-20" y="10" width="540" height="200" evaluationTime="Report">
+			<dataset kind="pie">
+				<series>
+					<keyExpression><![CDATA[$F{titulo}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total_prestamos}]]></valueExpression>
+					<labelExpression><![CDATA[$F{titulo}]]></labelExpression>
+				</series>
+			</dataset>
+			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
+	</columnHeader>
+</jasperReport>
